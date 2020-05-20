@@ -110,6 +110,7 @@ public class Blackjack {
         if (jugador.sumaCartas() == 21){
             System.out.println("BLACKJACK, HAS GANADO!!!");
             System.out.println("Has ganado " + jugador.getApuesta() * 1.5 + " fichas");
+            croupier.apostar(croupier.getApuesta() * 0.5);
             jugador.ingresar((jugador.getApuesta() * 2.5));
             jugador.addVictoria();
         }else if(jugador.sumaCartas() > 21){
