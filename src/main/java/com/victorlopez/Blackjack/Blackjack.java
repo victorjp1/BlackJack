@@ -46,7 +46,7 @@ public class Blackjack {
         jugador.iniciarPartida(saldoBase);
         croupier.iniciarPartida(saldoBase);
         boolean salir = false;
-        do {
+        while (!salir){
             reiniciarMano();
             nuevaMano();
             if (!jugador.puedeApostar(apuestaMinima)){
@@ -56,7 +56,7 @@ public class Blackjack {
                 System.out.println("La banca ya no puede apostar más");
                 System.out.println("Ve a cobrar tus fichas");
             }
-        }while (!salir);
+        }
     }
     private void reiniciarMano(){
         baraja.barajar();
@@ -102,8 +102,10 @@ public class Blackjack {
         mostrarCartas(croupier);
         if (apuestaDoble()){
             jugador.apostar(apuestaMinima * 2);
+            croupier.apostar(apuestaMinima * 2);
         }else{
             jugador.apostar(apuestaMinima);
+            croupier.apostar(apuestaMinima);
         }
         if (jugador.sumaCartas() == 21){
             System.out.println("BLACKJACK, HAS GANADO!!!");
@@ -113,7 +115,7 @@ public class Blackjack {
         }else if(jugador.sumaCartas() > 21){
             System.out.println("Te has pasado de 21");
             System.out.println("Has perdido!!");
-            croupier.ingresar(jugador.getApuesta());
+            croupier.ingresar(croupier.getApuesta() * 2);
             croupier.addVictoria();
         }else{
             pedirCartas();
@@ -121,7 +123,7 @@ public class Blackjack {
                 System.out.println("Te has pasado de 21");
                 System.out.println("Has perdido!");
                 croupier.addVictoria();
-                croupier.ingresar(jugador.getApuesta());
+                croupier.ingresar(croupier.getApuesta() * 2);
             }else{
                 juegaCroupier();
                 System.out.println("La puntuación del croupier es de: " + croupier.sumaCartas());
@@ -150,7 +152,7 @@ public class Blackjack {
                 System.out.println("La banca tiene ventaja :(");
                 System.out.println("Has perdido!!");
                 croupier.addVictoria();
-                croupier.ingresar(jugador.getApuesta());
+                croupier.ingresar(croupier.getApuesta() * 2);
             }
         }
     }
@@ -194,9 +196,9 @@ public class Blackjack {
                     System.out.println("Recuerda: [S/N]");
                 }
             }
-            Lib.pausa();
-            Lib.limpiarPantalla();
         }while (!salir);
+        Lib.pausa();
+        Lib.limpiarPantalla();
     }
     public String getEstadisticas(){
         String aux = "";
@@ -217,13 +219,5 @@ public class Blackjack {
     }
     public double getApuestaMinima() {
         return apuestaMinima;
-    }
-
-    public Jugador getJugador() {
-        return jugador;
-    }
-
-    public Jugador getCroupier() {
-        return croupier;
     }
 }

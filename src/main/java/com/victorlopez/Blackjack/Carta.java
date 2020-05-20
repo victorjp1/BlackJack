@@ -35,17 +35,17 @@ public class Carta {
     public String toImage(){
         String aux = "";
         if (oculta){
-            aux += "-----\n";
-            aux += "|" + "?" + "  |\n";
-            aux += "| " + "?" + " |\n";
-            aux +=  "|  " + "?" + "|\n";
-            aux += "-----\n";
+            aux += "-------\n";
+            aux += "|" + "?" + "    |\n";
+            aux += "|  " + "?" + "  |\n";
+            aux += "|    " + "?" + "|\n";
+            aux += "-------\n";
         }else{
-            aux += "-----\n";
-            aux += "|" + simboloCarta() + "  |\n";
-            aux += "| " + getPaloAscii() + " |\n";
-            aux +=  "|  " + simboloCarta() + "|\n";
-            aux += "-----\n";
+            aux += "-------\n";
+            aux += "|" + String.format("%-2s",simboloCarta()) + "   |\n";
+            aux += "|  " + getPaloAscii() + "  |\n";
+            aux +=  "|   " + String.format("%2s",simboloCarta()) + "|\n";
+            aux += "-------\n";
         }
         return aux;
     }

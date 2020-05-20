@@ -65,8 +65,8 @@ public class Jugador {
         this.nombre = nombre;
     }
     public void ingresar(double cantidad){
-        if (cantidad < 0){
-            apostado = 0;
+        if (cantidad > 0){
+            apostado -= cantidad;
             saldo += cantidad;
         }
     }
@@ -81,7 +81,7 @@ public class Jugador {
         return false;
     }
     public boolean puedeApostar(double cantidad){
-        return cantidad < saldo;
+        return cantidad <= saldo;
     }
     public void addCarta(Carta c){
         if (c.getNumero() == 1){

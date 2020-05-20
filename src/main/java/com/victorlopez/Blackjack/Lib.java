@@ -1,29 +1,9 @@
 package com.victorlopez.Blackjack;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Lib {
-    /**
-     * Método que llena de forma aleatoria un array list
-     * @param a array list a llenar
-     * @param nElementos numero de elementos a introducir
-     */
-    public static void llenarArrayListAleatorio(ArrayList<Double> a, int nElementos){
-        for (int i = 0; i < nElementos; i++) {
-            a.add((double) Lib.aleatorio(0,5));
-        }
-    }
-    /**
-     * Método para llenar un array con enteros aleatorios
-     * @param n array a llenar
-     */
-    public static void llenarArrayAleatorio(int[] n){
-        for (int i = 0; i < n.length; i++) {
-            n[i] = Lib.aleatorio(0,50);
-        }
-    }
     /**
      * Método que genera un número aleatorio.
      * @param min Mínimo a generar
