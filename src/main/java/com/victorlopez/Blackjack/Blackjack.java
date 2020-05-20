@@ -34,7 +34,7 @@ public class Blackjack {
             if (!jugador.puedeApostar(apuestaMinima)){
                 salir = true;
                 System.out.println("Ya no puedes jugar más");
-            }else if (!croupier.puedeApostar(apuestaMinima * 2)){
+            }else if (!croupier.puedeApostar(apuestaMinima * 2.5)){
                 System.out.println("La banca ya no puede apostar más");
                 System.out.println("Ve a cobrar tus fichas");
             }
